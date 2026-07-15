@@ -20,7 +20,7 @@ from pathlib import Path
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
 
-from masking_service import mask_pdf
+from services.masking_service import mask_pdf
 
 app = FastAPI(
     title="PDF Data Masking Service",

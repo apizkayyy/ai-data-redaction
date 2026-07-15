@@ -54,19 +54,19 @@ export OPENAI_API_KEY="sk-..."
 ### A. Python module
 
 ```python
-from masking_service import mask_pdf
+from services.masking_service import mask_pdf
 
 result = mask_pdf(
     input_path="document.pdf",
     output_path="document_masked.pdf",
-    use_presidio=True,    # local NER + regex (default: True)
-    use_openai=True,      # OpenAI semantic detection (default: True)
+    use_presidio=True,  # local NER + regex (default: True)
+    use_openai=True,  # OpenAI semantic detection (default: True)
     presidio_min_score=0.4,
     verbose=True,
 )
 
-print(result["redactions_applied"])   # number of black bars drawn
-print(result["layer_counts"])         # {"presidio_only": 3, "openai_only": 1, "both": 4}
+print(result["redactions_applied"])  # number of black bars drawn
+print(result["layer_counts"])  # {"presidio_only": 3, "openai_only": 1, "both": 4}
 for r in result["redactions"]:
     print(r)  # {"page": 1, "entity_type": "PHONE", "text": "+60 12-345 6789", ...}
 ```
